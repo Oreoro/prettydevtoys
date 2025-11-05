@@ -43,5 +43,5 @@ pnpm run script:create:tool my-tool-name
 
 ## Credits
 
-Orignally Coded by [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=readme).Kindly see the orignal repo at https://github.com/CorentinTh/it-tools.This is a work in progress repo and is no means a replacement for the original repo.Infact,I will recommend contributing only to the orignal repo linked above as its a mature project and is well maintaied.I will only accept contribution that are relevant to theme and styling in my repo as my goal is to make it accessible to beginner devs.
+Orignally Coded by [Corentin Thomasset](https://corentin.tech?utm_source=it-tools&utm_medium=readme).Kindly see the orignal repo at https://github.com/CorentinTh/it-tools .This is a work in progress repo and is no means a replacement for the original repo.Infact,I will recommend contributing only to the orignal repo linked above as its a mature project and is well maintaied.I will only accept contribution that are relevant to theme and styling in my repo as my goal is to make it accessible to beginner devs.
 
