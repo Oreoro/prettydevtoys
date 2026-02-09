@@ -29,10 +29,10 @@ function toggleFavorite(event: MouseEvent) {
       variant="text"
       circle
       :type="buttonType"
-      :style="{ opacity: isFavorite ? 1 : 0.2 }"
+      :style="{ opacity: isFavorite ? 1 : 0.25 }"
       @click="toggleFavorite"
     >
-      <icon-mdi-heart />
+      <icon-mdi-heart :style="{ color: isFavorite ? '#e03131' : '#000000' }" />
     </c-button>
   </c-tooltip>
 </template>

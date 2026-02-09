@@ -37,7 +37,7 @@ const flatTools = computed<{ name: string; path: string; isActive: boolean }[]>(
   flex-direction: column;
   gap: 8px;
   font-size: 14px;
-  color: var(--color-ink-muted);
+  color: var(--color-text-muted);
 }
 
 .tool-menu__list {
@@ -51,15 +51,33 @@ const flatTools = computed<{ name: string; path: string; isActive: boolean }[]>(
 
 .tool-menu__link {
   display: block;
-  padding: 10px 12px;
-  color: var(--color-ink-muted);
+  padding: 10px 14px;
+  color: var(--color-text-secondary);
   text-decoration: none;
   border-radius: 12px;
-  transition: color 0.2s ease, background-color 0.2s ease;
-  border: 1px solid var(--surface-border);
-  background: var(--surface-card);
+  transition: all var(--duration-fast) var(--ease-standard);
+  border: 1px solid transparent;
+  background: transparent;
+  font-weight: 500;
 }
 
-.tool-menu__link:hover { color: var(--color-ink); background: var(--surface-card-alt); }
-.tool-menu__link.is-active { color: var(--color-ink); font-weight: 600; background: var(--surface-card-alt); }
+.tool-menu__link:hover { 
+  color: var(--color-text); 
+  background: var(--color-secondary-hover); 
+  border-color: var(--color-border);
+  transform: translateX(4px);
+}
+
+.tool-menu__link.is-active { 
+  color: var(--color-primary); 
+  font-weight: 600; 
+  background: var(--color-primary-light); 
+  border-color: var(--color-primary);
+}
+
+.tool-menu__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
 </style>

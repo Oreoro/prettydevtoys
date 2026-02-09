@@ -1,70 +1,93 @@
 
 :root {
-  /* Primitive Color Tokens */
+  /* Hex Jewel-Tone Color Palette - Beautiful & Versatile */
+  
+  /* Core Hex Colors */
+  --hex-obsidian: rgba(20, 20, 28, 1);        /* #14141c - Deep dark blue-gray */
+  --hex-rose-quartz: rgba(245, 192, 192, 1);  /* #f5c0c0 - Soft pink */
+  --hex-jade: rgba(92, 177, 152, 1);          /* #5cb198 - Teal green */
+  --hex-amethyst: rgba(164, 119, 178, 1);     /* #a477b2 - Purple */
+  --hex-citrine: rgba(205, 168, 73, 1);       /* #cda849 - Golden yellow */
+  --hex-opal: rgba(251, 249, 249, 1);         /* #fbf9f9 - Off-white */
+  --hex-sugilite: rgba(95, 80, 157, 1);       /* #5f509d - Deep purple */
+  --hex-cement: rgba(113, 122, 148, 1);        /* #717a94 - Blue-gray */
+  
+  /* RGB versions for opacity control */
+  --hex-obsidian-rgb: 20, 20, 28;
+  --hex-rose-quartz-rgb: 245, 192, 192;
+  --hex-jade-rgb: 92, 177, 152;
+  --hex-amethyst-rgb: 164, 119, 178;
+  --hex-citrine-rgb: 205, 168, 73;
+  --hex-opal-rgb: 251, 249, 249;
+  --hex-sugilite-rgb: 95, 80, 157;
+  --hex-cement-rgb: 113, 122, 148;
+  
+  /* Neutral Colors */
   --color-white: rgba(255, 255, 255, 1);
   --color-black: rgba(0, 0, 0, 1);
-  --color-cream-50: rgba(252, 252, 249, 1);
-  --color-cream-100: rgba(255, 255, 253, 1);
-  --color-gray-200: rgba(245, 245, 245, 1);
-  --color-gray-300: rgba(167, 169, 169, 1);
-  --color-gray-400: rgba(119, 124, 124, 1);
-  --color-slate-500: rgba(98, 108, 113, 1);
-  --color-brown-600: rgba(94, 82, 64, 1);
-  --color-charcoal-700: rgba(31, 33, 33, 1);
-  --color-charcoal-800: rgba(38, 40, 40, 1);
-  --color-slate-900: rgba(19, 52, 59, 1);
-  --color-teal-300: rgba(50, 184, 198, 1);
-  --color-teal-400: rgba(45, 166, 178, 1);
-  --color-teal-500: rgba(33, 128, 141, 1);
-  --color-teal-600: rgba(29, 116, 128, 1);
-  --color-teal-700: rgba(26, 104, 115, 1);
-  --color-teal-800: rgba(41, 150, 161, 1);
-  --color-red-400: rgba(255, 84, 89, 1);
-  --color-red-500: rgba(192, 21, 47, 1);
-  --color-orange-400: rgba(230, 129, 97, 1);
-  --color-orange-500: rgba(168, 75, 47, 1);
+  
+  /* Status Colors - Using Hex palette */
+  --color-red-400: var(--hex-rose-quartz);
+  --color-red-500: rgba(240, 29, 11, 1);
+  --color-red-600: rgba(240, 17, 9, 1);
+  --color-green-400: var(--hex-jade);
+  --color-green-500: rgba(0, 73, 86, 1);
+  --color-green-600: rgba(0, 22, 96, 1);
+  --color-orange-400: var(--hex-citrine);
+  --color-orange-500: rgba(43, 64, 80, 1);
+  --color-orange-600: rgba(43, 57, 55, 1);
 
-  /* RGB versions for opacity control */
-  --color-brown-600-rgb: 94, 82, 64;
-  --color-teal-500-rgb: 33, 128, 141;
-  --color-slate-900-rgb: 19, 52, 59;
-  --color-slate-500-rgb: 98, 108, 113;
-  --color-red-500-rgb: 192, 21, 47;
-  --color-red-400-rgb: 255, 84, 89;
-  --color-orange-500-rgb: 168, 75, 47;
-  --color-orange-400-rgb: 230, 129, 97;
+  /* RGB versions for opacity control - Hex palette */
+  --color-red-500-rgb: 240, 29, 11;
+  --color-red-400-rgb: 245, 192, 192;
+  --color-green-500-rgb: 0, 73, 86;
+  --color-green-400-rgb: 92, 177, 152;
+  --color-orange-500-rgb: 43, 64, 80;
+  --color-orange-400-rgb: 205, 168, 73;
 
-  /* Background color tokens (Light Mode) */
-  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
-  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
-  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
-  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
-  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
-  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
-  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
-  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+  /* Background color tokens (Light Mode) - Hex Jewel Tones */
+  --color-bg-1: rgba(var(--hex-jade-rgb), 0.12);      /* Jade */
+  --color-bg-2: rgba(var(--hex-amethyst-rgb), 0.12);  /* Amethyst */
+  --color-bg-3: rgba(var(--hex-sugilite-rgb), 0.12);  /* Sugilite */
+  --color-bg-4: rgba(var(--hex-rose-quartz-rgb), 0.12); /* Rose Quartz */
+  --color-bg-5: rgba(var(--hex-citrine-rgb), 0.12);   /* Citrine */
+  --color-bg-6: rgba(var(--hex-cement-rgb), 0.12);   /* Cement */
+  --color-bg-7: rgba(var(--hex-amethyst-rgb), 0.08);  /* Amethyst light */
+  --color-bg-8: rgba(var(--hex-jade-rgb), 0.08);     /* Jade light */
 
-  /* Semantic Color Tokens (Light Mode) */
-  --color-background: var(--color-cream-50);
-  --color-surface: var(--color-cream-100);
-  --color-text: var(--color-slate-900);
-  --color-text-secondary: var(--color-slate-500);
-  --color-primary: var(--color-teal-500);
-  --color-primary-hover: var(--color-teal-600);
-  --color-primary-active: var(--color-teal-700);
-  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
-  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-btn-primary-text: var(--color-cream-50);
-  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-error: var(--color-red-500);
-  --color-success: var(--color-teal-500);
-  --color-warning: var(--color-orange-500);
-  --color-info: var(--color-slate-500);
-  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
-  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+  /* Semantic Color Tokens (Light Mode) - Hex Beautiful Palette */
+  --color-background: var(--hex-opal);
+  --color-surface: var(--color-white);
+  --color-surface-alt: rgba(var(--hex-opal-rgb), 0.6);
+  --color-text: var(--hex-obsidian);
+  --color-text-secondary: var(--hex-cement);
+  --color-text-muted: rgba(var(--hex-cement-rgb), 0.7);
+  --color-primary: var(--hex-amethyst);
+  --color-primary-hover: var(--hex-sugilite);
+  --color-primary-active: rgba(var(--hex-sugilite-rgb), 0.9);
+  --color-primary-light: rgba(var(--hex-amethyst-rgb), 0.15);
+  --color-secondary: rgba(var(--hex-cement-rgb), 0.1);
+  --color-secondary-hover: rgba(var(--hex-cement-rgb), 0.15);
+  --color-secondary-active: rgba(var(--hex-cement-rgb), 0.2);
+  --color-border: rgba(var(--hex-cement-rgb), 0.25);
+  --color-border-light: rgba(var(--hex-cement-rgb), 0.15);
+  --color-btn-primary-text: var(--color-white);
+  --color-card-border: rgba(var(--hex-amethyst-rgb), 0.2);
+  --color-card-border-inner: rgba(var(--hex-cement-rgb), 0.2);
+  --color-error: rgba(240, 29, 11, 1);
+  --color-success: var(--hex-jade);
+  --color-warning: var(--hex-citrine);
+  --color-info: var(--hex-sugilite);
+  --color-focus-ring: rgba(var(--hex-amethyst-rgb), 0.4);
+  --color-select-caret: rgba(var(--hex-obsidian-rgb), 0.8);
+  
+  /* Beautiful Hex Jewel-Tone Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--hex-amethyst), var(--hex-sugilite));
+  --gradient-secondary: linear-gradient(135deg, var(--hex-jade), var(--hex-amethyst));
+  --gradient-accent: linear-gradient(135deg, var(--hex-sugilite), var(--hex-jade));
+  --gradient-surface: linear-gradient(135deg, rgba(var(--hex-amethyst-rgb), 0.04), rgba(var(--hex-jade-rgb), 0.04));
+  --gradient-warm: linear-gradient(135deg, var(--hex-rose-quartz), var(--hex-citrine));
+  --gradient-cool: linear-gradient(135deg, var(--hex-jade), var(--hex-sugilite));
 
   /* Common style patterns */
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
@@ -81,10 +104,10 @@
   --color-info-rgb: 98, 108, 113;
 
   /* Typography */
-  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
-    Monaco, Consolas, monospace;
+  --font-family-base: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-family-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-size-xs: 11px;
   --font-size-sm: 12px;
   --font-size-base: 14px;
@@ -145,157 +168,177 @@
   --container-xl: 1280px;
 }
 
-/* Dark mode colors */
+/* Dark mode colors - Tech Layout */
 @media (prefers-color-scheme: dark) {
   :root {
-    /* RGB versions for opacity control (Dark Mode) */
-    --color-gray-400-rgb: 119, 124, 124;
-    --color-teal-300-rgb: 50, 184, 198;
-    --color-gray-300-rgb: 167, 169, 169;
-    --color-gray-200-rgb: 245, 245, 245;
+    /* Background color tokens (Dark Mode) - Tech Layout */
+    --color-bg-1: rgba(6, 182, 212, 0.15); /* Cyan */
+    --color-bg-2: rgba(168, 85, 247, 0.15); /* Purple */
+    --color-bg-3: rgba(59, 130, 246, 0.15); /* Blue */
+    --color-bg-4: rgba(239, 68, 68, 0.15); /* Red */
+    --color-bg-5: rgba(34, 197, 94, 0.15); /* Green */
+    --color-bg-6: rgba(249, 115, 22, 0.15); /* Orange */
+    --color-bg-7: rgba(236, 72, 153, 0.15); /* Pink */
+    --color-bg-8: rgba(14, 116, 144, 0.15); /* Dark Cyan */
 
-    /* Background color tokens (Dark Mode) */
-    --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
-    --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
-    --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
-    --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
-    --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
-    --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
-    --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
-    --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
-
-    /* Semantic Color Tokens (Dark Mode) */
-    --color-background: var(--color-charcoal-700);
-    --color-surface: var(--color-charcoal-800);
-    --color-text: var(--color-gray-200);
-    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
-    --color-primary: var(--color-teal-300);
-    --color-primary-hover: var(--color-teal-400);
-    --color-primary-active: var(--color-teal-800);
-    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
-    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
-    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
-    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    /* Semantic Color Tokens (Dark Mode) - Tech Layout */
+    --color-background: var(--color-slate-900);
+    --color-surface: var(--color-gray-900);
+    --color-surface-alt: var(--color-gray-800);
+    --color-text: var(--color-gray-100);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.8);
+    --color-text-muted: rgba(var(--color-gray-400-rgb), 0.7);
+    --color-primary: var(--color-cyan-400);
+    --color-primary-hover: var(--color-cyan-300);
+    --color-primary-active: var(--color-cyan-500);
+    --color-primary-light: rgba(var(--color-cyan-500-rgb), 0.2);
+    --color-secondary: rgba(var(--color-gray-500-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-500-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-500-rgb), 0.35);
+    --color-border: rgba(var(--color-gray-600-rgb), 0.5);
+    --color-border-light: rgba(var(--color-gray-700-rgb), 0.4);
     --color-error: var(--color-red-400);
-    --color-success: var(--color-teal-300);
+    --color-success: var(--color-green-400);
     --color-warning: var(--color-orange-400);
-    --color-info: var(--color-gray-300);
-    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
-    --color-btn-primary-text: var(--color-slate-900);
-    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
-    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
-    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
-    --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
-    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+    --color-info: var(--color-blue-400);
+    --color-focus-ring: rgba(var(--color-cyan-400-rgb), 0.4);
+    --color-btn-primary-text: var(--color-gray-900);
+    --color-card-border: rgba(var(--color-cyan-500-rgb), 0.3);
+    --color-card-border-inner: rgba(var(--color-gray-600-rgb), 0.3);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.9);
+    
+    /* Tech Layout Gradients - Dark Mode */
+    --gradient-primary: linear-gradient(135deg, var(--color-cyan-500), var(--color-purple-500));
+    --gradient-secondary: linear-gradient(135deg, var(--color-blue-500), var(--color-cyan-500));
+    --gradient-accent: linear-gradient(135deg, var(--color-purple-500), var(--color-blue-500));
+    --gradient-surface: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(168, 85, 247, 0.1));
 
     /* Common style patterns - updated for dark mode */
     --focus-ring: 0 0 0 3px var(--color-focus-ring);
     --focus-outline: 2px solid var(--color-primary);
     --status-bg-opacity: 0.15;
     --status-border-opacity: 0.25;
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    --button-border-secondary: rgba(var(--color-gray-600-rgb), 0.3);
+    --color-border-secondary: rgba(var(--color-gray-600-rgb), 0.3);
     --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23e5e7eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
     /* RGB versions for dark mode */
-    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-success-rgb: var(--color-green-400-rgb);
     --color-error-rgb: var(--color-red-400-rgb);
     --color-warning-rgb: var(--color-orange-400-rgb);
-    --color-info-rgb: var(--color-gray-300-rgb);
+    --color-info-rgb: var(--color-blue-400-rgb);
   }
 }
 
-/* Data attribute for manual theme switching */
+/* Data attribute for manual theme switching - Dark Mode */
 [data-color-scheme="dark"] {
-  /* RGB versions for opacity control (dark mode) */
-  --color-gray-400-rgb: 119, 124, 124;
-  --color-teal-300-rgb: 50, 184, 198;
-  --color-gray-300-rgb: 167, 169, 169;
-  --color-gray-200-rgb: 245, 245, 245;
+  /* Background color tokens (Dark Mode) - Hex Jewel Tones */
+  --color-bg-1: rgba(var(--hex-jade-rgb), 0.18);
+  --color-bg-2: rgba(var(--hex-amethyst-rgb), 0.18);
+  --color-bg-3: rgba(var(--hex-sugilite-rgb), 0.18);
+  --color-bg-4: rgba(var(--hex-rose-quartz-rgb), 0.15);
+  --color-bg-5: rgba(var(--hex-citrine-rgb), 0.18);
+  --color-bg-6: rgba(var(--hex-cement-rgb), 0.18);
+  --color-bg-7: rgba(var(--hex-amethyst-rgb), 0.12);
+  --color-bg-8: rgba(var(--hex-jade-rgb), 0.12);
 
-  /* Colorful background palette - Dark Mode */
-  --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
-  --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
-  --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
-  --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
-  --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
-  --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
-  --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
-  --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
-
-  /* Semantic Color Tokens (Dark Mode) */
-  --color-background: var(--color-charcoal-700);
-  --color-surface: var(--color-charcoal-800);
-  --color-text: var(--color-gray-200);
-  --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
-  --color-primary: var(--color-teal-300);
-  --color-primary-hover: var(--color-teal-400);
-  --color-primary-active: var(--color-teal-800);
-  --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
-  --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
-  --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
-  --color-border: rgba(var(--color-gray-400-rgb), 0.3);
-  --color-error: var(--color-red-400);
-  --color-success: var(--color-teal-300);
-  --color-warning: var(--color-orange-400);
-  --color-info: var(--color-gray-300);
-  --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
-  --color-btn-primary-text: var(--color-slate-900);
-  --color-card-border: rgba(var(--color-gray-400-rgb), 0.15);
-  --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
-  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
-  --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+  /* Semantic Color Tokens (Dark Mode) - Hex Beautiful */
+  --color-background: var(--hex-obsidian);
+  --color-surface: rgba(25, 25, 35, 1);
+  --color-surface-alt: rgba(30, 30, 40, 1);
+  --color-text: var(--hex-opal);
+  --color-text-secondary: rgba(var(--hex-cement-rgb), 0.85);
+  --color-text-muted: rgba(var(--hex-cement-rgb), 0.65);
+  --color-primary: var(--hex-amethyst);
+  --color-primary-hover: var(--hex-rose-quartz);
+  --color-primary-active: rgba(var(--hex-amethyst-rgb), 0.9);
+  --color-primary-light: rgba(var(--hex-amethyst-rgb), 0.2);
+  --color-secondary: rgba(var(--hex-cement-rgb), 0.2);
+  --color-secondary-hover: rgba(var(--hex-cement-rgb), 0.3);
+  --color-secondary-active: rgba(var(--hex-cement-rgb), 0.4);
+  --color-border: rgba(var(--hex-cement-rgb), 0.4);
+  --color-border-light: rgba(var(--hex-cement-rgb), 0.25);
+  --color-error: var(--hex-rose-quartz);
+  --color-success: var(--hex-jade);
+  --color-warning: var(--hex-citrine);
+  --color-info: var(--hex-sugilite);
+  --color-focus-ring: rgba(var(--hex-amethyst-rgb), 0.5);
+  --color-btn-primary-text: var(--hex-obsidian);
+  --color-card-border: rgba(var(--hex-amethyst-rgb), 0.35);
+  --color-card-border-inner: rgba(var(--hex-cement-rgb), 0.3);
+  --color-select-caret: rgba(var(--hex-opal-rgb), 0.9);
+  
+  /* Beautiful Hex Gradients - Dark Mode */
+  --gradient-primary: linear-gradient(135deg, var(--hex-amethyst), var(--hex-sugilite));
+  --gradient-secondary: linear-gradient(135deg, var(--hex-jade), var(--hex-amethyst));
+  --gradient-accent: linear-gradient(135deg, var(--hex-sugilite), var(--hex-jade));
+  --gradient-surface: linear-gradient(135deg, rgba(var(--hex-amethyst-rgb), 0.08), rgba(var(--hex-jade-rgb), 0.08));
+  --gradient-warm: linear-gradient(135deg, var(--hex-rose-quartz), var(--hex-citrine));
+  --gradient-cool: linear-gradient(135deg, var(--hex-jade), var(--hex-sugilite));
 
   /* Common style patterns - updated for dark mode */
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
   --focus-outline: 2px solid var(--color-primary);
-  --status-bg-opacity: 0.15;
-  --status-border-opacity: 0.25;
-  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --status-bg-opacity: 0.18;
+  --status-border-opacity: 0.3;
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  --button-border-secondary: rgba(var(--hex-cement-rgb), 0.3);
+  --color-border-secondary: rgba(var(--hex-cement-rgb), 0.3);
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2314141c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23fbf9f9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
   /* RGB versions for dark mode */
-  --color-success-rgb: var(--color-teal-300-rgb);
-  --color-error-rgb: var(--color-red-400-rgb);
-  --color-warning-rgb: var(--color-orange-400-rgb);
-  --color-info-rgb: var(--color-gray-300-rgb);
+  --color-success-rgb: var(--hex-jade-rgb);
+  --color-error-rgb: var(--hex-rose-quartz-rgb);
+  --color-warning-rgb: var(--hex-citrine-rgb);
+  --color-info-rgb: var(--hex-sugilite-rgb);
 }
 
 [data-color-scheme="light"] {
-  /* RGB versions for opacity control (light mode) */
-  --color-brown-600-rgb: 94, 82, 64;
-  --color-teal-500-rgb: 33, 128, 141;
-  --color-slate-900-rgb: 19, 52, 59;
-
-  /* Semantic Color Tokens (Light Mode) */
-  --color-background: var(--color-cream-50);
-  --color-surface: var(--color-cream-100);
-  --color-text: var(--color-slate-900);
-  --color-text-secondary: var(--color-slate-500);
-  --color-primary: var(--color-teal-500);
-  --color-primary-hover: var(--color-teal-600);
-  --color-primary-active: var(--color-teal-700);
-  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
-  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-btn-primary-text: var(--color-cream-50);
-  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-error: var(--color-red-500);
-  --color-success: var(--color-teal-500);
-  --color-warning: var(--color-orange-500);
-  --color-info: var(--color-slate-500);
-  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  /* Semantic Color Tokens (Light Mode) - Hex Beautiful Palette */
+  --color-background: var(--hex-opal);
+  --color-surface: var(--color-white);
+  --color-surface-alt: rgba(var(--hex-opal-rgb), 0.6);
+  /* Force solid black text in light mode for maximum legibility */
+  --color-text: #000000;
+  --color-text-secondary: #000000;
+  --color-text-muted: rgba(0, 0, 0, 0.78);
+  --color-primary: var(--hex-amethyst);
+  --color-primary-hover: var(--hex-sugilite);
+  --color-primary-active: rgba(var(--hex-sugilite-rgb), 0.9);
+  --color-primary-light: rgba(var(--hex-amethyst-rgb), 0.15);
+  --color-secondary: rgba(var(--hex-cement-rgb), 0.1);
+  --color-secondary-hover: rgba(var(--hex-cement-rgb), 0.15);
+  --color-secondary-active: rgba(var(--hex-cement-rgb), 0.2);
+  --color-border: rgba(var(--hex-cement-rgb), 0.25);
+  --color-border-light: rgba(var(--hex-cement-rgb), 0.15);
+  /* Primary button text also black so it never disappears on lighter accents */
+  --color-btn-primary-text: #000000;
+  --color-card-border: rgba(var(--hex-amethyst-rgb), 0.2);
+  --color-card-border-inner: rgba(var(--hex-cement-rgb), 0.2);
+  --color-error: rgba(240, 29, 11, 1);
+  --color-success: var(--hex-jade);
+  --color-warning: var(--hex-citrine);
+  --color-info: var(--hex-sugilite);
+  --color-focus-ring: rgba(var(--hex-amethyst-rgb), 0.4);
+  
+  /* Beautiful Hex Jewel-Tone Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--hex-amethyst), var(--hex-sugilite));
+  --gradient-secondary: linear-gradient(135deg, var(--hex-jade), var(--hex-amethyst));
+  --gradient-accent: linear-gradient(135deg, var(--hex-sugilite), var(--hex-jade));
+  --gradient-surface: linear-gradient(135deg, rgba(var(--hex-amethyst-rgb), 0.04), rgba(var(--hex-jade-rgb), 0.04));
+  --gradient-warm: linear-gradient(135deg, var(--hex-rose-quartz), var(--hex-citrine));
+  --gradient-cool: linear-gradient(135deg, var(--hex-jade), var(--hex-sugilite));
 
   /* RGB versions for light mode */
-  --color-success-rgb: var(--color-teal-500-rgb);
-  --color-error-rgb: var(--color-red-500-rgb);
-  --color-warning-rgb: var(--color-orange-500-rgb);
-  --color-info-rgb: var(--color-slate-500-rgb);
+  --color-success-rgb: var(--hex-jade-rgb);
+  --color-error-rgb: 240, 29, 11;
+  --color-warning-rgb: var(--hex-citrine-rgb);
+  --color-info-rgb: var(--hex-sugilite-rgb);
 }
 
 /* Base styles */
@@ -723,13 +766,75 @@ select.form-control {
 }
 
 :focus-visible {
-  outline: var(--focus-outline);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
+
+/* Improved focus states for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
+
+/* Skip to content link for accessibility */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-to-content:focus {
+  top: 0;
 }
 
 /* Dark mode specifics */
 [data-color-scheme="dark"] .btn--outline {
-  border: 1px solid var(--color-border-secondary);
+  border: 1px solid var(--color-border);
+}
+
+/* Improved contrast for dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: var(--color-gray-50);
+    --color-text-secondary: var(--color-gray-300);
+  }
+}
+
+[data-color-scheme="dark"] {
+  --color-text: var(--color-gray-50);
+  --color-text-secondary: var(--color-gray-300);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: rgba(var(--color-gray-900-rgb), 0.5);
+    --focus-ring: 0 0 0 3px var(--color-primary);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @font-face {
@@ -741,60 +846,99 @@ select.form-control {
 /* END PERPLEXITY DESIGN SYSTEM */
 
 :root {
-  /* Stable light palette */
-  --nyanza: #d3f8e2;
-  --mauve: #e4c1f9;
-  --amaranth: #f694c1;
-  --vanilla: #ede7b1;
-  --uranian: #a9def9;
+  /* Hex Beautiful Color Variables */
+  --ink: var(--color-text);
+  --ink-soft: var(--color-text-secondary);
+  --ink-muted: var(--color-text-muted);
+  
+  /* Hex Beautiful Backgrounds */
+  --bg-fallback: var(--color-background);
+  --bg-gradient: var(--gradient-surface);
+  
+  /* Surfaces - Hex Beautiful */
+  --surface-page: var(--color-background);
+  --surface-elev-1: var(--color-surface);
+  --surface-elev-2: var(--color-surface-alt);
+  --surface-card: var(--color-surface);
+  --surface-card-alt: var(--color-surface-alt);
+  --surface-border: var(--color-border);
+  --shadow-soft: 0 10px 22px rgba(var(--hex-obsidian-rgb), 0.1);
 
-  /* Text (dark on light) */
-  --ink: #0e1520;
-  --ink-soft: #1f2a36;
-  --ink-muted: #4a5b6c;
-
-  /* Global gradient (with solid fallback) */
-  --bg-fallback: #EECDA3;
-  --bg-gradient: linear-gradient(to right, #EF629F, #EECDA3);
-
-  /* Surfaces now use the gradient */
-  --surface-page: var(--bg-gradient);
-  --surface-elev-1: var(--bg-gradient);
-  --surface-elev-2: var(--bg-gradient);
-  --surface-card: var(--surface-elev-1);
-  --surface-card-alt: var(--surface-elev-2);
-  --surface-border: #a9def94d; /* accent border */
-  --shadow-soft: 0 10px 22px rgba(0, 0, 0, 0.08);
-
-  /* Accent and states */
-  --accent: var(--uranian);
-  --accent-soft: #a9def94d;
-  --success: var(--nyanza);
-  --warning: var(--vanilla);
-  --danger: var(--amaranth);
+  /* Accent and states - Hex Beautiful */
+  --accent: var(--hex-amethyst);
+  --accent-soft: var(--color-primary-light);
+  --success: var(--hex-jade);
+  --warning: var(--hex-citrine);
+  --danger: var(--hex-rose-quartz);
+  --cyan: var(--hex-jade);
+  --neon: var(--hex-amethyst);
 
   /* Typography */
   --font-sans: 'JetBrains Mono', ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
-  /* All gradients unified */
-  --gradient-page: var(--bg-gradient);
-  --gradient-bar: var(--bg-gradient);
-  --gradient-sidebar: var(--bg-gradient);
+  /* Hex Beautiful Gradients */
+  --gradient-page: var(--gradient-surface);
+  --gradient-bar: var(--gradient-primary);
+  --gradient-sidebar: var(--gradient-surface);
+  
+  /* Chip background */
+  --chip-bg: var(--color-secondary);
 }
 
 html,
-body { background-color: var(--bg-fallback); background-image: var(--gradient-page); min-height: 100%; }
+body { 
+  background-color: var(--color-background); 
+  background-image: var(--gradient-surface); 
+  min-height: 100%; 
+}
 
-body { font-family: var(--font-sans); color: var(--ink); margin: 0; padding: 0; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { 
+  font-family: var(--font-sans); 
+  color: var(--color-text); 
+  margin: 0; 
+  padding: 0; 
+  -webkit-font-smoothing: antialiased; 
+  text-rendering: optimizeLegibility; 
+}
 
-.glass-surface { background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); }
+.glass-surface { 
+  background: var(--color-surface); 
+  border: 1px solid var(--color-border); 
+  border-radius: var(--radius-lg); 
+  box-shadow: var(--shadow-soft); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
 
-::selection { background: #a9def980; color: #0e1520; }
+::selection { 
+  background: rgba(var(--hex-amethyst-rgb), 0.3); 
+  color: var(--color-text); 
+}
 
-/* Inputs (light) */
-input, textarea, select { font-family: var(--font-sans); color: var(--ink); background: #ffffff; border: 1px solid var(--surface-border); border-radius: 10px; padding: 8px 10px; }
-input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-input::placeholder, textarea::placeholder { color: var(--ink-muted); }
+:where(button, a, input, textarea, [tabindex])::selection {
+  background: rgba(var(--hex-amethyst-rgb), 0.4);
+}
+
+/* Inputs - Tech Layout */
+input, textarea, select { 
+  font-family: var(--font-sans); 
+  color: var(--color-text); 
+  background: var(--color-surface); 
+  border: 1px solid var(--color-border); 
+  border-radius: 10px; 
+  padding: 8px 10px; 
+  transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+input:focus, textarea:focus, select:focus { 
+  outline: none;
+  border-color: var(--color-primary); 
+  box-shadow: var(--focus-ring); 
+}
+
+input::placeholder, textarea::placeholder { 
+  color: var(--color-text-muted); 
+}
 
 /* Fix focus/selection helpers */
 :where(button, a, input, textarea, [tabindex])::selection {}

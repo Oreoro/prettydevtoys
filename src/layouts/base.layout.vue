@@ -32,21 +32,6 @@ const visibleChips = computed(() => (showAllChips.value ? compactTools.value : c
 
 <template>
   <MenuLayout>
-    <template #sider>
-      <div class="sidebar glass-surface">
-        <div class="sidebar__inner">
-          <RouterLink to="/" class="sidebar__brand">
-            <span class="sidebar__brand-name">Pretty DevToys</span>
-            <span class="sidebar__brand-sub">{{ $t('home.subtitle') }}</span>
-          </RouterLink>
-
-          <div class="sidebar__list pretty-scrollbar">
-            <CollapsibleToolMenu :tools-by-category="tools" />
-          </div>
-        </div>
-      </div>
-    </template>
-
     <template #content>
       <div class="page">
         <nav class="topbar__tools pretty-scrollbar container card">
@@ -75,10 +60,13 @@ const visibleChips = computed(() => (showAllChips.value ? compactTools.value : c
 <style lang="less" scoped>
 .sidebar {
   height: 100%;
-  padding: 18px 16px;
-  background: var(--gradient-sidebar);
-  border: 1px solid var(--surface-border);
+  padding: 20px 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .sidebar__inner {
@@ -91,23 +79,31 @@ const visibleChips = computed(() => (showAllChips.value ? compactTools.value : c
 .sidebar__brand {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  color: var(--color-ink);
+  gap: 6px;
+  color: var(--color-text);
   text-decoration: none;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.sidebar__brand:hover {
+  color: var(--color-primary);
 }
 
 .sidebar__brand-name {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 22px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .sidebar__brand-sub {
   font-size: 13px;
-  color: var(--color-ink-muted);
-}
-
-.dark .sidebar__brand {
-  color: #f4f6ff;
+  color: var(--color-text-muted);
+  font-weight: 500;
 }
 
 .sidebar__list {
@@ -127,43 +123,50 @@ const visibleChips = computed(() => (showAllChips.value ? compactTools.value : c
 .topbar__tools {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 10px;
-  padding: 8px 12px;
-  margin: 6px auto 12px;
+  gap: 10px 12px;
+  padding: 12px 16px;
+  margin: 8px auto 16px;
   max-width: 1200px;
   align-content: flex-start;
-  background: var(--surface-card);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.24);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   overflow-x: auto;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .topbar__tool { display: inline-flex; align-items: center; white-space: nowrap; line-height: 1; }
 
 /* Ensure consistent look for chips even if global shortcut changes */
 .topbar__tool.badge {
-  padding: 6px 10px;
+  padding: 8px 14px;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: .02em;
+  letter-spacing: .01em;
   text-transform: none;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.35);
-  border: 1px solid var(--surface-border);
-  color: var(--color-ink);
-  backdrop-filter: saturate(1.1) blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition: all var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
 }
 
 .topbar__tool.badge:hover {
-  background: color-mix(in srgb, var(--accent) 10%, rgba(255,255,255,0.35));
+  background: var(--color-secondary-hover);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
 }
 
 /* active route */
 .topbar__tool.router-link-active {
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--surface-border));
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
 .topbar__more { background: transparent; cursor: pointer; }

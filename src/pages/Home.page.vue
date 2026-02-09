@@ -89,54 +89,136 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="home">
-    <div class="home__controls">
-      <c-button size="small" @click="compact = !compact">{{ compact ? 'Expand all' : 'Compact all' }}</c-button>
-    </div>
-
-    <section v-if="showFavorites" class="home__section glass-surface">
-      <header class="home__section-header">
-        <h2>{{ $t('home.categories.favoriteTools') }}</h2>
+  <div class="home home--minimal">
+    <section class="home__hero glass-surface">
+      <header class="home__hero-header">
+        <h1>Pretty DevToys</h1>
+        <p>{{ $t('home.subtitle') }}</p>
       </header>
-
-      <div class="tool-grid">
-        <ToolCard v-for="tool in favoriteTools" :key="tool.name" :tool="tool" />
+      <div class="home__search">
+        <n-input
+          ref="searchRef"
+          v-model:value="searchTerm"
+          size="large"
+          round
+          :placeholder="$t('search.placeholder')"
+          clearable
+        />
       </div>
-    </section>
-
-    <section class="home__section glass-surface">
-      <header class="home__section-header">
-        <h2>
-          {{ normalizedSearch ? $t('search.label') : $t('home.categories.allTools') }}
+      <div v-if="normalizedSearch && filteredTools.length" class="home__results">
+        <h2 class="home__results-title">
+          {{ $t('search.results', { count: filteredTools.length }) }}
         </h2>
-      </header>
-
-      <template v-if="hasResults">
-        <details v-for="{ name, items } in groupedTools" :key="name" class="home__group" :open="!compact">
-          <summary class="home__group-header">
-            <span class="home__group-chip" :data-category="name">{{ name }}</span>
-            <span class="home__group-length">{{ items.length }}</span>
-          </summary>
-          <div class="tool-grid" :class="{ compact }">
-            <ToolCard v-for="tool in items" :key="tool.name" :tool="tool" />
-          </div>
-        </details>
-      </template>
-
-      <div v-else class="home__empty">
-        <p>{{ $t('search.noResults', { term: searchTerm }) }}</p>
-        <c-button variant="text" @click="searchTerm = ''">
-          {{ $t('search.clear') }}
-        </c-button>
+        <div class="home__results-grid">
+          <ToolCard v-for="tool in filteredTools.slice(0, 9)" :key="tool.name" :tool="tool" />
+        </div>
       </div>
+      <p v-else class="home__hero-hint">
+        Start typing to search tools, or pick one from the colorful bar above.
+      </p>
     </section>
   </div>
 </template>
 
 <style scoped lang="less">
-.home { display: flex; flex-direction: column; gap: 24px; }
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 12px;
+}
 
-.home__controls { display: flex; justify-content: flex-end; }
+.home__hero {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 24px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.home__hero-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.home__hero-header h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 40px);
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home__hero-header p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.home__hero-hint {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.home__search {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.home__search :deep(.n-input) {
+  max-width: 420px;
+  width: 100%;
+}
+
+.home__search-hint {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.home__search-hint kbd {
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-light);
+  font-size: 11px;
+}
+
+.home__results {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.home__results-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.home__results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .home__hero {
+    padding: 20px 18px 24px;
+  }
+}
 
 
 /* hero removed */
@@ -266,21 +348,30 @@ onBeforeUnmount(() => {
 .home__section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 24px 24px 28px;
+  gap: 24px;
+  padding: 28px 28px 32px;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--surface-border);
-  background: var(--surface-card);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
 }
 
-.dark .home__section { background: var(--surface-card); }
+.home__section:hover {
+  box-shadow: var(--shadow-md);
+}
 
 .home__section-header h2 {
   margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-ink);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .home__group {
@@ -310,35 +401,63 @@ details.home__group > summary.home__group-header::before {
   top: 50%;
   width: 8px;
   height: 8px;
-  border-right: 2px solid var(--color-ink);
-  border-bottom: 2px solid var(--color-ink);
+  border-right: 2px solid var(--color-text);
+  border-bottom: 2px solid var(--color-text);
   transform: translateY(-50%) rotate(-45deg);
-  transition: transform 0.18s var(--transition-snappy);
+  transition: transform var(--duration-normal) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
 }
+
 details.home__group[open] > summary.home__group-header::before {
   transform: translateY(-50%) rotate(45deg);
+  border-color: var(--color-primary);
 }
 
 .home__group-chip {
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 999px;
-  background: var(--chip-bg);
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border);
   font-size: 13px;
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--color-text);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+details.home__group[open] > summary.home__group-header .home__group-chip {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .home__group-length {
   font-size: 12px;
-  color: var(--color-ink-muted);
+  color: var(--color-text-muted);
+  font-weight: 500;
 }
 
-.dark .home__group-chip { color: var(--color-ink); }
-
-/* Crypto category color */
+/* Category-specific colors - Hex Beautiful Jewel Tones */
 .home__group-chip[data-category="Crypto"] {
-  background: linear-gradient(90deg, rgba(19, 80, 88, 0.35), rgba(119, 179, 245, 0.35));
-  border: 1px solid rgba(19, 80, 88, 0.45);
+  background: rgba(var(--hex-sugilite-rgb), 0.15);
+  border-color: rgba(var(--hex-sugilite-rgb), 0.3);
+  color: var(--hex-sugilite);
+}
+
+.home__group-chip[data-category="Text"] {
+  background: rgba(var(--hex-amethyst-rgb), 0.15);
+  border-color: rgba(var(--hex-amethyst-rgb), 0.3);
+  color: var(--hex-amethyst);
+}
+
+.home__group-chip[data-category="Converters"] {
+  background: rgba(var(--hex-jade-rgb), 0.15);
+  border-color: rgba(var(--hex-jade-rgb), 0.3);
+  color: var(--hex-jade);
+}
+
+.home__group-chip[data-category*="Generator"] {
+  background: rgba(var(--hex-citrine-rgb), 0.15);
+  border-color: rgba(var(--hex-citrine-rgb), 0.3);
+  color: var(--hex-citrine);
 }
 
 .tool-grid {
@@ -370,16 +489,16 @@ details.home__group[open] > summary.home__group-header::before {
 .home__empty {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   align-items: flex-start;
-  padding: 24px;
-  border: 1px dashed rgba(31, 36, 50, 0.16);
+  padding: 32px;
+  border: 2px dashed var(--color-border);
   border-radius: 16px;
-  color: var(--color-ink-muted);
-}
-
-.dark .home__empty {
-  border-color: rgba(232, 236, 255, 0.16);
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  text-align: center;
+  width: 100%;
+  align-items: center;
 }
 
 @media (max-width: 640px) {

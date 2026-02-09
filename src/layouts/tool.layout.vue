@@ -32,7 +32,7 @@ const toolCategory = computed(() => route.meta?.category as string | undefined);
 </script>
 
 <template>
-  <BaseLayout>
+  <div class="tool-layout">
     <div class="tool-shell">
       <header class="tool-header">
         <div class="tool-header__left">
@@ -51,14 +51,26 @@ const toolCategory = computed(() => route.meta?.category as string | undefined);
         <slot />
       </section>
     </div>
-  </BaseLayout>
+  </div>
 </template>
 
 <style lang="less" scoped>
+.tool-layout {
+  min-height: 100vh;
+  padding: 32px clamp(24px, 6vw, 64px) 80px;
+  background: var(--color-background);
+  background-image: var(--gradient-surface);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .tool-shell {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
+  max-width: 960px;
 }
 
 .tool-header {
@@ -68,13 +80,13 @@ const toolCategory = computed(() => route.meta?.category as string | undefined);
   gap: 24px;
   padding: 24px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, transparent), color-mix(in srgb, var(--neon) 12%, transparent)), var(--surface-card);
-  border: 1px solid var(--surface-border);
+  background: var(--gradient-primary), var(--surface-card);
+  border: 1px solid var(--color-card-border);
 }
 
 .dark .tool-header {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, transparent), color-mix(in srgb, var(--neon) 10%, transparent)), var(--surface-card);
-  border-color: var(--surface-border);
+  background: var(--gradient-primary), var(--surface-card);
+  border-color: var(--color-card-border);
 }
 
 .tool-header__left {
@@ -89,30 +101,32 @@ const toolCategory = computed(() => route.meta?.category as string | undefined);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-ink);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--color-text);
+  background: rgba(var(--hex-opal-rgb), 0.6);
   padding: 6px 12px;
   border-radius: 999px;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--color-border-light);
 }
 
 .dark .tool-header__badge {
-  color: var(--color-ink);
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--color-text);
+  background: rgba(var(--hex-opal-rgb), 0.12);
 }
 
 .tool-header__left h1 {
   margin: 0;
   font-size: clamp(28px, 3.4vw, 40px);
   font-weight: 600;
-  color: var(--color-ink);
+  /* Force strong black headline for tools */
+  color: #000000;
 }
 
 .tool-header__left p {
   margin: 0;
   font-size: 15px;
   line-height: 1.6;
-  color: var(--color-ink-muted);
+  /* Force strong black subheadline/description for tools */
+  color: #000000;
   max-width: 60ch;
 }
 
@@ -128,19 +142,23 @@ const toolCategory = computed(() => route.meta?.category as string | undefined);
 
 .tool-content :deep(> *) {
   border-radius: 18px;
-  border: 1px solid var(--surface-border);
+  border: 1px solid var(--color-card-border-inner);
   padding: 20px;
   background: var(--surface-card);
-  box-shadow: 0 16px 32px rgba(0, 229, 255, 0.12);
+  box-shadow: var(--shadow-sm);
 }
 
 .dark .tool-content :deep(> *) {
   background: var(--surface-card);
-  border-color: var(--surface-border);
-  box-shadow: 0 20px 36px rgba(0, 255, 136, 0.14);
+  border-color: var(--color-card-border-inner);
+  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 640px) {
+  .tool-layout {
+    padding: 20px 14px 64px;
+  }
+
   .tool-header {
     flex-direction: column;
     align-items: flex-start;
