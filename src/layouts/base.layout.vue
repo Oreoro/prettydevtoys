@@ -1,26 +1,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { NMessageProvider, NNotificationProvider } from 'naive-ui';
 import { RouterLink } from 'vue-router';
-import { Menu2 } from '@vicons/tabler';
-import { storeToRefs } from 'pinia';
-
-import MenuLayout from '../components/MenuLayout.vue';
-import NavbarButtons from '../components/NavbarButtons.vue';
-import CollapsibleToolMenu from '@/components/CollapsibleToolMenu.vue';
 import { useStyleStore } from '@/stores/style.store';
-import type { ToolCategory } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
 
-const styleStore = useStyleStore();
+const _styleStore = useStyleStore();
 const toolStore = useToolStore();
-const { favoriteTools, toolsByCategory } = storeToRefs(toolStore);
-const { t } = useI18n();
-
-const tools = computed<ToolCategory[]>(() => [
-  ...(favoriteTools.value.length > 0 ? [{ name: t('tools.categories.favorite-tools'), components: favoriteTools.value }] : []),
-  ...toolsByCategory.value,
-]);
 
 // Full list of tools for the top chip navigation
 const compactTools = computed(() => toolStore.tools);
@@ -35,7 +20,7 @@ const visibleChips = computed(() => (showAllChips.value ? compactTools.value : c
   <MenuLayout>
     <template #content>
       <div class="page">
-        <nav class="topbar__tools pretty-scrollbar container card">
+        <nav class="topbar__tools card container pretty-scrollbar">
           <RouterLink
             v-for="tool in visibleChips"
             :key="tool.name"
@@ -50,7 +35,7 @@ const visibleChips = computed(() => (showAllChips.value ? compactTools.value : c
           </button>
         </nav>
 
-        <main class="page__content pretty-scrollbar container">
+        <main class="page__content container pretty-scrollbar">
           <slot />
         </main>
       </div>

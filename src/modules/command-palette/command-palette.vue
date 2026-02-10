@@ -32,7 +32,9 @@ whenever(keys.meta_k, open);
 whenever(keys.slash, () => {
   // Only open on '/' when not typing in an input/textarea
   const target = (document.activeElement?.tagName || '').toLowerCase();
-  if (!['input', 'textarea'].includes(target)) open();
+  if (!['input', 'textarea'].includes(target)) {
+    open();
+  }
 });
 whenever(keys.escape, close);
 

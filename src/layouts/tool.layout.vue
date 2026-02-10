@@ -3,8 +3,6 @@ import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 
-import BaseLayout from './base.layout.vue';
-
 const route = useRoute();
 
 const head = computed<HeadObject>(() => ({

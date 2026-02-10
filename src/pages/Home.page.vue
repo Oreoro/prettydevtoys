@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useHead } from '@vueuse/head';
-import { storeToRefs } from 'pinia';
 
 import ToolCard from '../components/ToolCard.vue';
 import type { Tool } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
 
-const { t } = useI18n();
-
 useHead({ title: 'Pretty DevToys - Handy online tools for developers' });
 
 const toolStore = useToolStore();
-const { favoriteTools, toolsByCategory } = storeToRefs(toolStore);
 
 const searchTerm = ref('');
 const searchRef = ref<HTMLInputElement | null>(null);
@@ -23,9 +19,11 @@ const INITIAL_RESULTS_LIMIT = 6;
 const filteredTools = computed<Tool[]>(() => {
   const term = normalizedSearch.value;
   const pool = toolStore.tools;
-  if (!term) return pool;
+  if (!term) {
+    return pool;
+  }
 
-  return pool.filter(tool => {
+  return pool.filter((tool) => {
     const content = [
       tool.name,
       tool.description,
@@ -39,37 +37,12 @@ const filteredTools = computed<Tool[]>(() => {
   });
 });
 
-const groupedTools = computed(() => {
-  if (!normalizedSearch.value) {
-    return toolsByCategory.value.map(category => ({
-      name: category.name,
-      items: category.components,
-    }));
-  }
-
-  const matches = new Set(filteredTools.value.map(tool => tool.path));
-
-  return toolsByCategory.value
-    .map(category => ({
-      name: category.name,
-      items: category.components.filter(tool => matches.has(tool.path)),
-    }))
-    .filter(category => category.items.length > 0);
-});
-
-const resultSummary = computed(() => t('search.results', { count: filteredTools.value.length }));
-const hasResults = computed(() => filteredTools.value.length > 0);
-const showFavorites = computed(() => !normalizedSearch.value && favoriteTools.value.length > 0);
-
 const showAllResults = ref(false);
 
 watch(normalizedSearch, () => {
   // Each new search starts in "show less" mode
   showAllResults.value = false;
 });
-
-// Compact mode: categories collapsed and cards condensed by default
-const compact = ref(false);
 
 onMounted(() => {
   const onKey = (e: KeyboardEvent) => {
@@ -78,7 +51,7 @@ onMounted(() => {
       if (el) {
         e.preventDefault();
         // n-input renders an internal input; focus the underlying input if available
-        // @ts-ignore - access overlayed input element
+        // @ts-expect-error - access overlayed internal input element from n-input
         const inputEl = (el?.$el?.querySelector?.('input')) as HTMLInputElement | null;
         (inputEl ?? (el as unknown as HTMLElement))?.focus();
       }
@@ -86,20 +59,22 @@ onMounted(() => {
   };
   window.addEventListener('keydown', onKey);
   // store disposer on instance
-  // @ts-ignore
+  // @ts-expect-error - attach handler reference to window for disposal
   window.__homeOnKey = onKey;
 });
 
 onBeforeUnmount(() => {
-  // @ts-ignore
+  // @ts-expect-error - read handler reference stored on window
   const onKey = window.__homeOnKey as ((e: KeyboardEvent) => void) | undefined;
-  if (onKey) window.removeEventListener('keydown', onKey);
+  if (onKey) {
+    window.removeEventListener('keydown', onKey);
+  }
 });
 </script>
 
 <template>
   <div class="home home--minimal">
-    <section class="home__hero glass-surface">
+    <section class="glass-surface home__hero">
       <header class="home__hero-header">
         <h1>Pretty DevToys</h1>
       </header>
@@ -300,7 +275,6 @@ onBeforeUnmount(() => {
     padding: 20px 18px 24px;
   }
 }
-
 
 /* hero removed */
 

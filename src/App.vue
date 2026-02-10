@@ -7,7 +7,7 @@ import { useStyleStore } from './stores/style.store';
 
 const route = useRoute();
 const layout = computed(() => route?.meta?.layout ?? layouts.base);
-const styleStore = useStyleStore();
+const _styleStore = useStyleStore();
 
 // Use default (light) theme and compute overrides from CSS variables
 const theme = computed(() => undefined);
