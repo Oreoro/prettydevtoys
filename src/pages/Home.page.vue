@@ -3,7 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useHead } from '@vueuse/head';
 
 import ToolCard from '../components/ToolCard.vue';
-import type { Tool } from '@/tools/tools.types';
+import type { ToolWithCategory } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
 
 useHead({ title: 'Pretty DevToys - Handy online tools for developers' });
@@ -16,7 +16,7 @@ const normalizedSearch = computed(() => searchTerm.value.trim().toLowerCase());
 
 const INITIAL_RESULTS_LIMIT = 6;
 
-const filteredTools = computed<Tool[]>(() => {
+const filteredTools = computed<ToolWithCategory[]>(() => {
   const term = normalizedSearch.value;
   const pool = toolStore.tools;
   if (!term) {
