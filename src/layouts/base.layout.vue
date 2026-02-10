@@ -26,7 +26,8 @@ const tools = computed<ToolCategory[]>(() => [
 const compactTools = computed(() => toolStore.tools);
 
 // Limit chips to reduce clutter, with toggle to expand
-const showAllChips = ref(true);
+// Start in "see less" mode by default
+const showAllChips = ref(false);
 const visibleChips = computed(() => (showAllChips.value ? compactTools.value : compactTools.value.slice(0, 24)));
 </script>
 

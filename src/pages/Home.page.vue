@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useHead } from '@vueuse/head';
 import { storeToRefs } from 'pinia';
 
@@ -17,6 +17,8 @@ const { favoriteTools, toolsByCategory } = storeToRefs(toolStore);
 const searchTerm = ref('');
 const searchRef = ref<HTMLInputElement | null>(null);
 const normalizedSearch = computed(() => searchTerm.value.trim().toLowerCase());
+
+const INITIAL_RESULTS_LIMIT = 6;
 
 const filteredTools = computed<Tool[]>(() => {
   const term = normalizedSearch.value;
@@ -59,6 +61,13 @@ const resultSummary = computed(() => t('search.results', { count: filteredTools.
 const hasResults = computed(() => filteredTools.value.length > 0);
 const showFavorites = computed(() => !normalizedSearch.value && favoriteTools.value.length > 0);
 
+const showAllResults = ref(false);
+
+watch(normalizedSearch, () => {
+  // Each new search starts in "show less" mode
+  showAllResults.value = false;
+});
+
 // Compact mode: categories collapsed and cards condensed by default
 const compact = ref(false);
 
@@ -93,14 +102,11 @@ onBeforeUnmount(() => {
     <section class="home__hero glass-surface">
       <header class="home__hero-header">
         <h1>Pretty DevToys</h1>
-        <p>{{ $t('home.subtitle') }}</p>
       </header>
       <div class="home__search">
         <n-input
           ref="searchRef"
           v-model:value="searchTerm"
-          size="large"
-          round
           :placeholder="$t('search.placeholder')"
           clearable
         />
@@ -110,12 +116,37 @@ onBeforeUnmount(() => {
           {{ $t('search.results', { count: filteredTools.length }) }}
         </h2>
         <div class="home__results-grid">
-          <ToolCard v-for="tool in filteredTools.slice(0, 9)" :key="tool.name" :tool="tool" />
+          <ToolCard
+            v-for="tool in (showAllResults ? filteredTools : filteredTools.slice(0, INITIAL_RESULTS_LIMIT))"
+            :key="tool.name"
+            :tool="tool"
+          />
+        </div>
+        <div
+          v-if="filteredTools.length > INITIAL_RESULTS_LIMIT"
+          class="home__results-footer"
+        >
+          <span class="home__results-meta">
+            {{
+              showAllResults
+                ? $t('search.results', { count: filteredTools.length })
+                : $t('search.results', { count: INITIAL_RESULTS_LIMIT })
+            }}
+          </span>
+          <button
+            type="button"
+            class="home__results-toggle"
+            @click="showAllResults = !showAllResults"
+          >
+            <span class="home__results-toggle-icon">
+              {{ showAllResults ? '▴' : '▾' }}
+            </span>
+            <span>
+              {{ showAllResults ? 'Show less' : 'Show all' }}
+            </span>
+          </button>
         </div>
       </div>
-      <p v-else class="home__hero-hint">
-        Start typing to search tools, or pick one from the colorful bar above.
-      </p>
     </section>
   </div>
 </template>
@@ -159,16 +190,8 @@ onBeforeUnmount(() => {
 }
 
 .home__hero-header p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-}
-
-.home__hero-hint {
-  margin: 12px 0 0;
-  font-size: 13px;
-  color: var(--color-text-muted);
+  /* subtitle removed to simplify the hero */
+  display: none;
 }
 
 .home__search {
@@ -212,6 +235,64 @@ onBeforeUnmount(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
+}
+
+.home__results-footer {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.home__results-meta {
+  white-space: nowrap;
+}
+
+.home__results-toggle {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.home__results-toggle:hover {
+  background: var(--color-secondary-hover);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.home__results-toggle-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.home__results-toggle:hover .home__results-toggle-icon {
+  background: var(--color-primary);
+  color: var(--color-surface);
 }
 
 @media (max-width: 640px) {

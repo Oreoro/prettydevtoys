@@ -4,8 +4,6 @@ import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
 
 import BaseLayout from './base.layout.vue';
-import FavoriteButton from '@/components/FavoriteButton.vue';
-import type { Tool } from '@/tools/tools.types';
 
 const route = useRoute();
 
@@ -43,8 +41,6 @@ const toolCategory = computed(() => route.meta?.category as string | undefined);
           <h1>{{ toolTitle }}</h1>
           <p>{{ toolDescription }}</p>
         </div>
-
-        <FavoriteButton class="tool-header__favorite" :tool="{ name: route.meta.name, path: route.path } as Tool" />
       </header>
 
       <section class="tool-content">

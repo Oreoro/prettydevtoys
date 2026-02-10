@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import FavoriteButton from './FavoriteButton.vue';
 import type { Tool } from '@/tools/tools.types';
 
 const props = defineProps<{ tool: Tool & { category: string } }>();
@@ -11,10 +10,6 @@ const { tool } = toRefs(props);
     <div class="tool-card__header">
       <div class="tool-card__icon">
         <n-icon size="22" :component="tool.icon" />
-      </div>
-
-      <div class="tool-card__actions">
-        <FavoriteButton :tool="tool" />
       </div>
     </div>
 
