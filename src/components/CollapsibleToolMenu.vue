@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useStorage } from '@vueuse/core';
 import { RouterLink, useRoute } from 'vue-router';
 import type { Tool, ToolCategory } from '@/tools/tools.types';
 
@@ -61,17 +60,17 @@ const flatTools = computed<{ name: string; path: string; isActive: boolean }[]>(
   font-weight: 500;
 }
 
-.tool-menu__link:hover { 
-  color: var(--color-text); 
-  background: var(--color-secondary-hover); 
+.tool-menu__link:hover {
+  color: var(--color-text);
+  background: var(--color-secondary-hover);
   border-color: var(--color-border);
   transform: translateX(4px);
 }
 
-.tool-menu__link.is-active { 
-  color: var(--color-primary); 
-  font-weight: 600; 
-  background: var(--color-primary-light); 
+.tool-menu__link.is-active {
+  color: var(--color-primary);
+  font-weight: 600;
+  background: var(--color-primary-light);
   border-color: var(--color-primary);
 }
 

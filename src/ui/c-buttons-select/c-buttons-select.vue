@@ -45,7 +45,7 @@ function selectOption(option: CButtonSelectOption<T>) {
 
 <template>
   <c-label v-bind="props">
-    <div class="flex gap-2">
+    <div class="c-buttons-select flex gap-2">
       <c-tooltip
         v-for="option in options" :key="option.value"
         :tooltip="option.tooltip"
@@ -62,3 +62,11 @@ function selectOption(option: CButtonSelectOption<T>) {
     </div>
   </c-label>
 </template>
+
+<style scoped lang="less">
+.c-buttons-select {
+  :deep(.c-button) {
+    color: var(--color-ink);
+  }
+}
+</style>
